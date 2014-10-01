@@ -6,6 +6,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
 import org.springframework.social.eventbrite.api.EventOperations;
 import org.springframework.social.eventbrite.api.Eventbrite;
+import org.springframework.social.eventbrite.api.UserOperations;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.social.support.ClientHttpRequestFactorySelector;
 import org.springframework.social.support.URIBuilder;
@@ -17,7 +18,7 @@ public class EventbriteTemplate extends AbstractOAuth2ApiBinding implements Even
 	private String accessToken;
 	private String clientId;
 	private EventOperations eventOperations;
-	
+	private UserOperations userOperations;
 
 	public EventbriteTemplate(String clientId) {
 		super();
@@ -69,4 +70,8 @@ public class EventbriteTemplate extends AbstractOAuth2ApiBinding implements Even
 			: URIBuilder.fromUri(uri);
 	}
 
+        @Override
+        public UserOperations userOperations() {
+            return this.userOperations;
+        }
 }
