@@ -1,7 +1,9 @@
 package org.springframework.social.eventbrite.api;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.List;
+
 
 /**
  *
@@ -9,49 +11,36 @@ import java.util.List;
  */
 public class EventbriteProfile implements Serializable {
     
-    private List<EventbriteProfileEmail> emails;
+    @JsonProperty
+    private List<Email> emails;
     
-    public class EventbriteProfileEmail {
+    private static class Email {
+        @JsonProperty
         private String email;
+        @JsonProperty
         private boolean verified;
+        @JsonProperty
         private boolean primary;
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
-
-        public boolean isVerified() {
-            return verified;
-        }
-
-        public void setVerified(boolean verified) {
-            this.verified = verified;
-        }
-
-        public boolean isPrimary() {
-            return primary;
-        }
-
-        public void setPrimary(boolean primary) {
-            this.primary = primary;
-        }
     }
     
+    @JsonProperty
     private String id;
+    @JsonProperty
     private String name;
+    @JsonProperty("first_name")
     private String firstName;
+    @JsonProperty("last_name")
     private String lastName;
 
-    public List<EventbriteProfileEmail> getEmails() {
-        return emails;
-    }
-
-    public void setEmails(List<EventbriteProfileEmail> emails) {
-        this.emails = emails;
+    public String getPrimaryEmail() {
+        if(this.emails != null && !this.emails.isEmpty()) {
+            for(Email email : this.emails) {
+                if(email.primary == true) {
+                    return email.email;
+                }
+            }
+        }
+        return null;
     }
 
     public String getId() {

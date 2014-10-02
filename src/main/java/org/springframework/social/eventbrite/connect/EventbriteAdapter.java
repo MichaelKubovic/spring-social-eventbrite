@@ -36,7 +36,7 @@ public class EventbriteAdapter implements ApiAdapter<Eventbrite> {
     @Override
     public UserProfile fetchUserProfile(Eventbrite eventbrite) {
         EventbriteProfile profile = eventbrite.userOperations().getUserProfile();
-        return new UserProfileBuilder().setName(profile.getName()).setEmail(profile.getEmails().get(0).getEmail()).build();
+        return new UserProfileBuilder().setName(profile.getName()).setEmail(profile.getPrimaryEmail()).build();
     }
 
     @Override

@@ -31,13 +31,13 @@ public class EventbriteTemplateTest {
 		eventbrite = new EventbriteTemplate(clientId);
 	}
 
-	@Test
-	public void testSearch() {
-		EventSearchResults results = eventbrite.eventOperations()
-			.search(EventSearchParametersBuilder.eventSearchParameters()
-				.city("Boston")
-				.build());
-		assertNotNull(results);
-	}
+//	@Test
+//	public void testSearch() {
+//		EventSearchResults results = eventbrite.eventOperations()
+//			.search(EventSearchParametersBuilder.eventSearchParameters()
+//				.city("Boston")
+//				.build());
+//		assertNotNull(results);
+//	}
 
 }
