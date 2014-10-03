@@ -5,6 +5,8 @@
  */
 package org.springframework.social.eventbrite.api.impl;
 
+import java.util.List;
+import org.springframework.social.eventbrite.api.EventList;
 import org.springframework.social.eventbrite.api.EventbriteProfile;
 import org.springframework.social.eventbrite.api.UserOperations;
 import org.springframework.web.client.RestTemplate;
@@ -26,5 +28,11 @@ public class UserTemplate extends AbstractEventbriteOperations implements UserOp
     public EventbriteProfile getUserProfile() {
         return restTemplate.getForObject(buildUri("users/me/"), EventbriteProfile.class);
     }
+
+    @Override
+    public EventList getOwnedEvents() {
+        return restTemplate.getForObject("users/me/owned_events/", EventList.class);
+    }
+    
     
 }

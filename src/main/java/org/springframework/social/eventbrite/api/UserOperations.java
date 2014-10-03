@@ -6,4 +6,5 @@ package org.springframework.social.eventbrite.api;
  */
 public interface UserOperations {
     EventbriteProfile getUserProfile();
+    EventList getOwnedEvents();
 }
