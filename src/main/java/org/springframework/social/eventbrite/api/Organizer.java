@@ -1,52 +1,71 @@
 package org.springframework.social.eventbrite.api;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-//<organizer>
-//<id>65739440</id>
-//<name>New Year's NYC Team</name>
-//<description>We organizer the best parties in town!</description>
-//<url>http://www.eventbrite.com/org/65739440</url>
-//</organizer>
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Organizer {
+public class Organizer extends Resource {
 
-	private String id;
-	private String name;
-	private String description;
-	private String url;
+    @JsonProperty
+    private String name;
 
-	public String getId() {
-		return id;
-	}
+    @JsonProperty("num_future_events")
+    private Integer numFutureEvents;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    @JsonProperty("num_past_events")
+    private Integer numPostEvents;
 
-	public String getName() {
-		return name;
-	}
+    @JsonProperty
+    private FormattedText description;
+    @JsonProperty
+    private String url;
+    @JsonProperty
+    private String logo;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public Integer getNumFutureEvents() {
+        return numFutureEvents;
+    }
 
-	public String getUrl() {
-		return url;
-	}
+    public void setNumFutureEvents(Integer numFutureEvents) {
+        this.numFutureEvents = numFutureEvents;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    public Integer getNumPostEvents() {
+        return numPostEvents;
+    }
+
+    public void setNumPostEvents(Integer numPostEvents) {
+        this.numPostEvents = numPostEvents;
+    }
+
+    public FormattedText getDescription() {
+        return description;
+    }
+
+    public void setDescription(FormattedText description) {
+        this.description = description;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
 
 }

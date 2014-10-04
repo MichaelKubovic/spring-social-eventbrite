@@ -1,123 +1,173 @@
 package org.springframework.social.eventbrite.api;
 
-import java.math.BigDecimal;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+public class Ticket extends Resource {
 
-//<ticket>
-//<id>45264859</id>
-//<name>VIP Registration</name>
-//<description>Access to VIP Rooms</description>
-//<type>0</type>
-//<currency>USD</currency>
-//<price>199.99</price>
-//<start_date>2008-10-24 00:00:00</start_date>
-//<end_date>2008-12-30 23:00:00</end_date>
-//<quantity_available>100</quantity_available>
-//<quantity_sold>0</quantity_sold>
-//</ticket>
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Ticket {
+    @JsonProperty("event_id")
+    private String eventId;
+    
+    @JsonProperty
+    private String name;
+    
+    @JsonProperty("maximum_quantity")
+    private Integer maximumQuantity;
+    
+    @JsonProperty("minimum_quantity")
+    private Integer minimumQuantity;
+    
+    @JsonProperty
+    private Boolean free;
+    
+    @JsonProperty
+    private Boolean donation;
+    
+    @JsonProperty
+    private String description;
+    
+    @JsonProperty("quantity_total")
+    private Integer quantityTotal;
+    
+    @JsonProperty("quantity_sold")
+    private Integer quantitySold;
+    
+    @JsonProperty("sales_end")
+    private String salesEnd;
+    
+    @JsonProperty
+    private Boolean hidden;
+    
+    @JsonProperty("include_fee")
+    private Boolean includeFee;
+    
+    @JsonProperty("split_fee")
+    private Boolean splitFee;
+    
+    @JsonProperty("hide_description")
+    private Boolean hideDescription;
+    
+    @JsonProperty("auto_hide")
+    private Boolean autoHide;
 
-	private String id;
-	private String name;
-	private String description;
-	private String type;
-	private String currency;
-	private BigDecimal price;
-	@XmlJavaTypeAdapter(EventbriteXmlDateAdapter.class)
-	@XmlElement(name="start_date")
-	private Date startDate;
-	@XmlJavaTypeAdapter(EventbriteXmlDateAdapter.class)
-	@XmlElement(name="end_date")
-	private Date endDate;
-	@XmlElement(name="quantity_available")
-	private Integer quantityAvailable;
-	@XmlElement(name="quantity_sold")
-	private Integer quantitySold;
-	
+    public String getEventId() {
+        return eventId;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Integer getMaximumQuantity() {
+        return maximumQuantity;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setMaximumQuantity(Integer maximumQuantity) {
+        this.maximumQuantity = maximumQuantity;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public Integer getMinimumQuantity() {
+        return minimumQuantity;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public void setMinimumQuantity(Integer minimumQuantity) {
+        this.minimumQuantity = minimumQuantity;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public Boolean getFree() {
+        return free;
+    }
 
-	public String getCurrency() {
-		return currency;
-	}
+    public void setFree(Boolean free) {
+        this.free = free;
+    }
 
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
+    public Boolean getDonation() {
+        return donation;
+    }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+    public void setDonation(Boolean donation) {
+        this.donation = donation;
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public Date getStartDate() {
-		return startDate;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
+    public Integer getQuantityTotal() {
+        return quantityTotal;
+    }
 
-	public Date getEndDate() {
-		return endDate;
-	}
+    public void setQuantityTotal(Integer quantityTotal) {
+        this.quantityTotal = quantityTotal;
+    }
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
+    public Integer getQuantitySold() {
+        return quantitySold;
+    }
 
-	public Integer getQuantityAvailable() {
-		return quantityAvailable;
-	}
-	public void setQuantityAvailable(Integer quantityAvailable) {
-		this.quantityAvailable = quantityAvailable;
-	}
+    public void setQuantitySold(Integer quantitySold) {
+        this.quantitySold = quantitySold;
+    }
 
-	public Integer getQuantitySold() {
-		return quantitySold;
-	}
+    public String getSalesEnd() {
+        return salesEnd;
+    }
 
-	public void setQuantitySold(Integer quantitySold) {
-		this.quantitySold = quantitySold;
-	}
+    public void setSalesEnd(String salesEnd) {
+        this.salesEnd = salesEnd;
+    }
 
+    public Boolean getHidden() {
+        return hidden;
+    }
+
+    public void setHidden(Boolean hidden) {
+        this.hidden = hidden;
+    }
+
+    public Boolean getIncludeFee() {
+        return includeFee;
+    }
+
+    public void setIncludeFee(Boolean includeFee) {
+        this.includeFee = includeFee;
+    }
+
+    public Boolean getSplitFee() {
+        return splitFee;
+    }
+
+    public void setSplitFee(Boolean splitFee) {
+        this.splitFee = splitFee;
+    }
+
+    public Boolean getHideDescription() {
+        return hideDescription;
+    }
+
+    public void setHideDescription(Boolean hideDescription) {
+        this.hideDescription = hideDescription;
+    }
+
+    public Boolean getAutoHide() {
+        return autoHide;
+    }
+
+    public void setAutoHide(Boolean autoHide) {
+        this.autoHide = autoHide;
+    }
+
+    
 }

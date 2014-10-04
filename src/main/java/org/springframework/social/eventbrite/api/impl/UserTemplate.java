@@ -31,7 +31,7 @@ public class UserTemplate extends AbstractEventbriteOperations implements UserOp
 
     @Override
     public EventList getOwnedEvents() {
-        return restTemplate.getForObject("users/me/owned_events/", EventList.class);
+        return restTemplate.getForObject(buildUri("users/me/owned_events/"), EventList.class);
     }
     
     

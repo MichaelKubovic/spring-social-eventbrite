@@ -17,6 +17,7 @@ import org.springframework.social.eventbrite.api.Eventbrite;
 import org.springframework.social.eventbrite.api.UserOperations;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.social.support.ClientHttpRequestFactorySelector;
+import org.springframework.web.client.RestTemplate;
 
 
 
@@ -57,19 +58,19 @@ public class EventbriteTemplate extends AbstractOAuth2ApiBinding implements Even
 
 	}
 	
-//	@Override
-//	protected void configureRestTemplate(RestTemplate restTemplate) {
-//		restTemplate.setErrorHandler(new EventbriteErrorHandler());
-//	}
+	@Override
+	protected void configureRestTemplate(RestTemplate restTemplate) {
+		restTemplate.setErrorHandler(new EventbriteErrorHandler());
+	}
 	
 	@Override
 	protected List<HttpMessageConverter<?>> getMessageConverters() {
 		
 		MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
 		ObjectMapper objectMapper = new ObjectMapper();
-//		objectMapper.configure(FAIL_ON_UNKNOWN_PROPERTIES, false);
-//		objectMapper.configure(WRITE_DATES_AS_TIMESTAMPS, false);
-//		objectMapper.configure(FAIL_ON_EMPTY_BEANS, false);
+		objectMapper.configure(FAIL_ON_UNKNOWN_PROPERTIES, false);
+		objectMapper.configure(WRITE_DATES_AS_TIMESTAMPS, false);
+		objectMapper.configure(FAIL_ON_EMPTY_BEANS, false);
 		objectMapper.setSerializationInclusion(NON_NULL);
 		jsonConverter.setObjectMapper(objectMapper);
 		
